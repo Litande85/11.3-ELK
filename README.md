@@ -36,7 +36,7 @@ cluster.name: makhota-cluster <--меняем имя кластера
 node.name: node-1 <--меняем название ноды, если нужно
 path.data: /var/lib/elasticsearch <-где храним данные
 path.logs: /var/log/elasticsearch <--куда пишем логи
-network.host: 0.0.0.0 <--какой ip слушает хост
+network.host: 192.168.56.112 <--какой ip слушает хост
 ```
 
 Перезапускаем Elasticsearch
@@ -67,7 +67,7 @@ sudo systemctl start kibana.service #--запускаем сервис
 Редактируем конфиг `/etc/kibana/kibana.yml`
 
 ``` bash
-server.host: "0.0.0.0" <--открываем интерфейс в мир
+server.host: "192.168.56.112" <--открываем интерфейс в мир
 ```
 
 ```bash
