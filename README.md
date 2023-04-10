@@ -17,6 +17,34 @@
 
 ### *<a name = "1"> Ответ к Заданию 1 </a>
 
+Установка Elasticsearch на Debian 11 c зеркала Yandex: 
+
+```bash
+apt update && apt install gnupg apt-transport-https #--зависимости
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add - #--добавляем gpg-ключ
+echo "deb https://mirror.yandex.ru/mirrors/elastic/8/ stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.list #--добавляем репозиторий в apt
+sudo apt update 
+sudo apt-get install elasticsearch #--устанавливаем elastic
+systemctl daemon-reload #--обновляем конфиги systemd
+systemctl enable elasticsearch.service #--включаем юнит
+systemctl start elasticsearch.service
+```
+
+Настройки конфигурации в `/etc/elasticsearch/elasticsearch.yml`
+```bash
+cluster.name: makhota-cluster <--меняем имя кластера
+node.name: node-1 <--меняем название ноды, если нужно
+path.data: /var/lib/elasticsearch <-где храним данные
+path.logs: /var/log/elasticsearch <--куда пишем логи
+network.host: 0.0.0.0 <--какой ip слушает хост
+```
+
+Перезапускаем Elasticsearch
+
+```bash
+sudo systemctl restart elasticsearch.service
+```
+![elasticsearch_conf](img/img%202023-04-10%20213948.png)
 
 ---
 
@@ -28,6 +56,25 @@
 
 ### *<a name = "2"> Ответ к Заданию 2 </a>
 
+Установrf Kibana на Debian 11: 
+```bash 
+sudo apt install kibana #--установка
+sudo systemctl daemon-reload #--обновляем конфиги systemd
+sudo systemctl enable kibana.service #--включаем юнит
+sudo systemctl start kibana.service #--запускаем сервис
+```
+
+Редактируем конфиг `/etc/kibana/kibana.yml`
+
+``` bash
+server.host: "0.0.0.0" <--открываем интерфейс в мир
+```
+
+```bash
+sudo systemctl restart kibana
+```
+
+![kibana](img/img%202023-04-10%20223912.png)
 
 ---
 
