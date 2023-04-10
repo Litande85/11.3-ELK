@@ -56,7 +56,7 @@ sudo systemctl restart elasticsearch.service
 
 ### *<a name = "2"> Ответ к Заданию 2 </a>
 
-Установrf Kibana на Debian 11: 
+Установка Kibana на Debian 11: 
 ```bash 
 sudo apt install kibana #--установка
 sudo systemctl daemon-reload #--обновляем конфиги systemd
